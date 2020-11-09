@@ -119,6 +119,7 @@ type Props = {
   onChangeLocation: string => void,
   setErrorPage: (error: ApiError) => void,
 
+  onCancel: () => void,
   onSharingClick: () => void,
   onEmbeddingClick: () => void,
 };
@@ -159,6 +160,7 @@ export default class Dashboard extends Component {
 
     onChangeLocation: PropTypes.func.isRequired,
 
+    onCancel: PropTypes.func.isRequired,
     onSharingClick: PropTypes.func.isRequired,
     onEmbeddingClick: PropTypes.func.isRequired,
   };
@@ -226,6 +228,10 @@ export default class Dashboard extends Component {
       id: this.props.dashboard.id,
       attributes: { [attribute]: value },
     });
+  };
+
+  onCancel = () => {
+    this.setState({ isSharing: false });
   };
 
   onSharingClick = () => {
@@ -331,7 +337,7 @@ export default class Dashboard extends Component {
                   )}
                 </div>
               </div>
-              <Sidebars {...this.props} isSharing={isSharing} />
+              <Sidebars {...this.props} isSharing={isSharing} onCancel={this.onCancel} />
             </div>
           </div>
         )}

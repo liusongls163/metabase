@@ -502,7 +502,7 @@ class SharingSidebar extends React.Component {
 
   render() {
     const { editingMode } = this.state;
-    const { pulse, formInput, pulseList } = this.props;
+    const { pulse, formInput, pulseList, onCancel } = this.props;
 
     // protect from empty values that will mess this up
     if (formInput === null || pulse === null || pulseList === null) {
@@ -561,7 +561,7 @@ class SharingSidebar extends React.Component {
       const slackSpec = formInput.channels.slack;
 
       return (
-        <Sidebar onCancel={() => true}>
+        <Sidebar onCancel={onCancel}>
           <div className="mt2 pt2 px4">
             <Heading>{t`Create a dashboard subscription`}</Heading>
           </div>
@@ -668,7 +668,7 @@ class SharingSidebar extends React.Component {
       return (
         <Sidebar
           onClose={this.handleSave}
-          onCancel={() => true}
+          onCancel={onCancel}
           className="text-dark"
         >
           <div className="pt4 flex align-center px4">
@@ -771,7 +771,7 @@ class SharingSidebar extends React.Component {
       return (
         <Sidebar
           onClose={this.handleSave}
-          onCancel={() => true}
+          onCancel={onCancel}
           className="text-dark"
         >
           <div className="pt4 flex align-center px4 mb3">
